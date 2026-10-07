@@ -1,0 +1,21 @@
+[project]
+name = "dbt-abnb"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Alok Srivastava", email = "coolaries26@gmai.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "dbt-core>=1.12.5",
+    "dbt-databricks>=1.12.6",
+    "dbt-snowflake>=1.12.1",
+]
+
+[project.scripts]
+dbt-abnb = "dbt_abnb:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
