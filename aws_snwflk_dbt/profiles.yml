@@ -1,0 +1,38 @@
+aws_snwflk_dbt:
+  outputs:
+    dev:
+      account: GFRKUPJ-CN97053
+      database: abnb
+      password: Basant#26password
+      role: ACCOUNTADMIN
+      schema: default_schema
+      threads: 1
+      type: snowflake
+      user: kashyapalok
+      warehouse: COMPUTE_WH
+  target: dev
+#ecommerce_dbt:
+#  outputs:
+#    dev:
+#      dbname: ecommerce_db
+#      host: 127.0.0.1
+#      pass: AppUser@2024!
+#      port: 5432
+#      schema: dbt_dev
+#      threads: 4
+#      type: postgres
+#      user: appuser
+#  target: dev
+#movie:
+#  outputs:
+#    dev:
+#      dbname: tsdb
+#      host: torhdk0bbj.nzh3eevn8d.tsdb.cloud.timescale.com
+#      pass: Basant#12345
+#      port: 36272
+#      schema: netfilm
+#      threads: 1
+#      type: postgres
+#      user: tsdbadmin
+#  target: dev
+#
