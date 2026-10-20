@@ -1,1 +1,0 @@
-select * from ABNB.STAGING.BOOKINGS;

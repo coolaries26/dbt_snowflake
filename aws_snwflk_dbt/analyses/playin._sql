@@ -1,0 +1,12 @@
+--{% set nights_booked = 1 %}
+{% set FLAG = 2 %}
+{% set nights_booked = 1 %}
+
+SELECT * FROM {{ ref('bronze_bookings') }} 
+{% if FLAG == 1 %}
+    where NIGHTS_BOOKED > {{ nights_booked }}
+{% else %}
+    where NIGHTS_BOOKED <= {{ nights_booked }}
+{% endif %}
+ORDER BY NIGHTS_BOOKED DESC
+LIMIT 10

@@ -1,0 +1,11 @@
+snapshots:
+    - name: dim_hosts
+      relation: ref('host')
+      config:
+        target_schema: gold
+        target_database: abnb
+        strategy: timestamp
+        updated_at: CREATED_AT
+        tags: ['dim_host']
+        unique_key: HOST_ID
+        dbt_valid_to_current: "to_date('9999-12-31')"

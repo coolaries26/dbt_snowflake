@@ -1,0 +1,51 @@
+models:
+  - name: silver_bookings
+    description: "Silver layer from Bronze data"
+    config:
+      materialized: table
+    columns:
+      - name: "BOOKING_ID"
+        description: "Unique identifier for each booking"
+        data_tests:
+          - not_null
+          - unique
+      - name: "LISTING_ID"
+        description: "Identifier for the listing associated with the booking"
+        data_tests:
+          - not_null
+      - name: "CREATED_AT"
+        description: "Timestamp when the source booking was created"
+        data_tests:
+          - not_null
+  - name: silver_hosts
+    description: "Silver layer from Bronze data"
+    config:
+      materialized: table
+    columns:
+      - name: "HOST_ID"
+        description: "Unique identifier for each host"
+        data_tests:
+          - not_null
+          - unique
+      - name: "HOST_NAME"
+        description: "Name of the host"
+        data_tests:
+          - not_null
+  - name: silver_listings
+    description: "Silver layer from Bronze data"
+    config:
+      materialized: table
+    columns:
+      - name: "LISTING_ID"
+        description: "Unique identifier for each listing"
+        data_tests:
+          - not_null
+          - unique
+      - name: "HOST_ID"
+        description: "Identifier for the host associated with the listing"
+        data_tests:
+          - not_null
+      - name: "CREATED_AT"
+        description: "Timestamp when the source listing was created"
+        data_tests:
+          - not_null

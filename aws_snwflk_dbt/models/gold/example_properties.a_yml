@@ -1,0 +1,13 @@
+models:
+  - name: gold_bookings
+    description: "Gold layer for silver data"
+    config:
+      materialized: view
+  - name: gold_hosts
+    description: "Gold layer for silver data"
+    config:
+      materialized: table
+  - name: fact
+    description: "fact table for analysis"
+    config:
+      materialized: table

@@ -1,0 +1,14 @@
+{% set tables = ['bronze_bookings', 'bronze_hosts', 'bronze_listings','silver_bookings', 'silver_hosts', 'silver_listings'] %}
+
+-- table counts
+{% for table in tables %}
+    SELECT '{{ table }}' AS table_name, COUNT(*) AS row_count
+    FROM {{ ref(table) }}
+    {% if not loop.last %}UNION ALL{% endif %}
+{% endfor %}
+
+-- Destructive: removes every row from each listed model relation.
+{% for table in tables %}
+DELETE FROM {{ ref(table) }};
+{% endfor %}
+
