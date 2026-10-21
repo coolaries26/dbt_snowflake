@@ -4,7 +4,15 @@ snapshots:
       config:
         target_schema: gold
         target_database: abnb
-        strategy: timestamp
+        strategy: check
+        check_cols:
+          - LISTING_ID
+          - PROPERTY_TYPE
+          - ROOM_TYPE
+          - CITY
+          - COUNTRY
+          - PRICE_CATEGORY
+          - CREATED_AT
         updated_at: CREATED_AT
         tags: ['dim_listings']
         unique_key: listing_ID

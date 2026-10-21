@@ -1,11 +1,16 @@
 snapshots:
-    - name: dim_hosts
-      relation: ref('host')
-      config:
-        target_schema: gold
-        target_database: abnb
-        strategy: timestamp
-        updated_at: CREATED_AT
-        tags: ['dim_host']
-        unique_key: HOST_ID
-        dbt_valid_to_current: "to_date('9999-12-31')"
+  - name: dim_hosts
+    relation: ref('host')
+    config:
+      target_schema: gold
+      target_database: abnb
+      strategy: check
+      check_cols:
+        - HOST_ID
+        - HOST_NAME
+        - HOST_SINCE
+        - IS_SUPERHOST
+        - RESPONSE_RATE_CATEGORY
+        - CREATED_AT
+      unique_key: HOST_ID
+      dbt_valid_to_current: "to_date('9999-12-31')"
