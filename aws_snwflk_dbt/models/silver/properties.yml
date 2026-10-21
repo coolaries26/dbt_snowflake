@@ -13,6 +13,14 @@ models:
         description: "Identifier for the listing associated with the booking"
         data_tests:
           - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_listings')
+                field: LISTING_ID
+      - name: "NIGHTS_BOOKED"
+        description: "Number of nights in the booking"
+        data_tests:
+          - not_null
       - name: "CREATED_AT"
         description: "Timestamp when the source booking was created"
         data_tests:
@@ -45,6 +53,10 @@ models:
         description: "Identifier for the host associated with the listing"
         data_tests:
           - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_hosts')
+                field: HOST_ID
       - name: "CREATED_AT"
         description: "Timestamp when the source listing was created"
         data_tests:

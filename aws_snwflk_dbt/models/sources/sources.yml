@@ -1,11 +1,38 @@
 sources:
   - name: STAGING
-    database: abnb  
-    schema: STAGING  
+    database: abnb
+    schema: STAGING
     tables:
-      - name: HOSTS
       - name: BOOKINGS
+        columns:
+          - name: BOOKING_ID
+            data_tests:
+              - not_null
+              - unique
+          - name: LISTING_ID
+            data_tests:
+              - not_null
+          - name: CREATED_AT
+            data_tests:
+              - not_null
+
+      - name: HOSTS
+        columns:
+          - name: HOST_ID
+            data_tests:
+              - not_null
+          - name: CREATED_AT
+            data_tests:
+              - not_null
+
       - name: LISTINGS
-
-
-
+        columns:
+          - name: LISTING_ID
+            data_tests:
+              - not_null
+          - name: HOST_ID
+            data_tests:
+              - not_null
+          - name: CREATED_AT
+            data_tests:
+              - not_null

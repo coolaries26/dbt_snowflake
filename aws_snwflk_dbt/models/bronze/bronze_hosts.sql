@@ -1,5 +1,5 @@
 {{ config(
-    unique_key='CREATED_AT',
+    unique_key='HOST_ID',
     materialized='incremental'
 ) }}
 
