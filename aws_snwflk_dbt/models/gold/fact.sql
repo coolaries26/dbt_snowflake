@@ -19,20 +19,6 @@
         ],
 
         "alias": "fact"
-    },
-    {
-        "table_name": "abnb.gold.dim_listings",
-        "columns": [
-        ],
-        "alias": "dim_listings",
-        "join_condition": "dim_listings.LISTING_ID = fact.BOOKING_LISTING_ID"
-    },
-    {
-        "table_name": "abnb.gold.dim_hosts",
-        "columns": [
-        ],
-        "alias": "dim_hosts",
-        "join_condition": "dim_hosts.HOST_ID = fact.HOSTS_HOST_ID"
     }
 ] %}
 
@@ -40,6 +26,3 @@ SELECT
     {{ configs[0].columns|join(', ') }}
 FROM 
     {{ configs[0].table_name }} AS {{ configs[0].alias }}
-    {% for config in configs[1:] %}
-    LEFT JOIN {{ config.table_name }} AS {{ config.alias }} ON {{ config.join_condition }}
-    {% endfor %}
