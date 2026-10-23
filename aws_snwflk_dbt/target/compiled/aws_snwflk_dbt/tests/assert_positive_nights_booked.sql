@@ -1,0 +1,4 @@
+SELECT *
+FROM abnb.silver.silver_bookings
+WHERE NIGHTS_BOOKED <= 0
+   OR NIGHTS_BOOKED IS NULL

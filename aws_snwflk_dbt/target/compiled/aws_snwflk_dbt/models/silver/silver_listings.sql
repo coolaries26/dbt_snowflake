@@ -1,0 +1,23 @@
+
+
+SELECT 
+    LISTING_ID,
+    HOST_ID,
+    PROPERTY_TYPE,
+    ROOM_TYPE,
+    CITY,
+    COUNTRY,
+    ACCOMMODATES,
+    BEDROOMS,
+    BATHROOMS,
+    PRICE_PER_NIGHT,
+    CASE
+        WHEN CAST(PRICE_PER_NIGHT AS INT) < 100 THEN 'LOW'
+        WHEN CAST(PRICE_PER_NIGHT AS INT) < 200 THEN 'MEDIUM'
+        ELSE 'HIGH'
+    END
+ as PRICE_CATEGORY,
+    CREATED_AT
+FROM abnb.bronze.bronze_listings
+
+    WHERE CREATED_AT > (SELECT COALESCE(MAX(CREATED_AT), '1900-01-01') FROM abnb.silver.silver_listings)

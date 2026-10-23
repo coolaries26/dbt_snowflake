@@ -1,0 +1,5 @@
+
+
+SELECT * FROM abnb.STAGING.HOSTS
+
+    WHERE CREATED_AT > (SELECT COALESCE((MAX(CREATED_AT)), '1900-01-01') FROM abnb.bronze.bronze_hosts)

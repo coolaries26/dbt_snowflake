@@ -1,6 +1,6 @@
 {% set configs =[
     {
-        "table_name": "abnb.silver.silver_bookings",
+        "table_name": ref('silver_bookings'),
         "columns": [
             "silver_bookings.BOOKING_ID AS bookings_BOOKING_ID",
             "silver_bookings.LISTING_ID AS BOOKING_LISTING_ID",
@@ -16,7 +16,7 @@
         "alias": "silver_bookings"
     },
     {
-        "table_name": "abnb.silver.silver_listings",
+        "table_name": ref('silver_listings'),
         "columns": [
             "PROPERTY_TYPE",
             "silver_listings.HOST_ID AS listings_HOST_ID",
@@ -35,7 +35,7 @@
         "join_condition": "listings_LISTING_ID = BOOKING_LISTING_ID"
     },
     {
-        "table_name": "abnb.silver.silver_hosts",
+        "table_name": ref('silver_hosts'),
         "columns": [
             "silver_hosts.HOST_ID AS hosts_HOST_ID",
             "HOST_NAME",

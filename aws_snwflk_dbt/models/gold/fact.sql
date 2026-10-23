@@ -1,6 +1,6 @@
 {% set configs =[
     {
-        "table_name": "abnb.gold.obt",
+        "table_name": ref('obt'),
         "columns": [
             "BOOKINGS_BOOKING_ID AS BOOKING_ID",
             "BOOKING_LISTING_ID as LISTING_ID",

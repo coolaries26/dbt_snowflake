@@ -1,0 +1,30 @@
+-- back compat for old kwarg name
+  
+  begin;
+    
+        
+            
+            
+            
+            
+        
+    
+
+    
+
+    merge into abnb.bronze.bronze_bookings as DBT_INTERNAL_DEST
+        using abnb.bronze.bronze_bookings__dbt_tmp as DBT_INTERNAL_SOURCE
+        on ((DBT_INTERNAL_SOURCE.BOOKING_ID = DBT_INTERNAL_DEST.BOOKING_ID))
+
+    
+    when matched then update set
+        "BOOKING_ID" = DBT_INTERNAL_SOURCE."BOOKING_ID","LISTING_ID" = DBT_INTERNAL_SOURCE."LISTING_ID","BOOKING_DATE" = DBT_INTERNAL_SOURCE."BOOKING_DATE","NIGHTS_BOOKED" = DBT_INTERNAL_SOURCE."NIGHTS_BOOKED","BOOKING_AMOUNT" = DBT_INTERNAL_SOURCE."BOOKING_AMOUNT","CLEANING_FEE" = DBT_INTERNAL_SOURCE."CLEANING_FEE","SERVICE_FEE" = DBT_INTERNAL_SOURCE."SERVICE_FEE","BOOKING_STATUS" = DBT_INTERNAL_SOURCE."BOOKING_STATUS","CREATED_AT" = DBT_INTERNAL_SOURCE."CREATED_AT"
+    
+
+    when not matched then insert
+        ("BOOKING_ID", "LISTING_ID", "BOOKING_DATE", "NIGHTS_BOOKED", "BOOKING_AMOUNT", "CLEANING_FEE", "SERVICE_FEE", "BOOKING_STATUS", "CREATED_AT")
+    values
+        ("BOOKING_ID", "LISTING_ID", "BOOKING_DATE", "NIGHTS_BOOKED", "BOOKING_AMOUNT", "CLEANING_FEE", "SERVICE_FEE", "BOOKING_STATUS", "CREATED_AT")
+
+;
+    commit;
